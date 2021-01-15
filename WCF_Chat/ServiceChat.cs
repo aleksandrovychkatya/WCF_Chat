@@ -10,7 +10,7 @@ namespace WCF_Chat
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ServiceChat : IServiceChat
     {
-        List<ServerUser> users = new List<ServerUser>();
+        public List<ServerUser> users = new List<ServerUser>();
         int nextId = 1;
         public int Connect(string name)
         {
@@ -35,7 +35,6 @@ namespace WCF_Chat
                 users.Remove(user);
                 SendMsg(" " + user.Name + " покинул чат!", 0);
             }
-            else throw new ArgumentNullException("User = null");
         }
 
         public void SendMsg(string msg, int id)

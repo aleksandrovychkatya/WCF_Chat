@@ -7,15 +7,29 @@ using System.ServiceModel;
 
 namespace ChatHost
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             using (var host = new ServiceHost(typeof(WCF_Chat.ServiceChat)))
             {
-                host.Open();
-                Console.WriteLine("Хост стартовал!");
-                Console.ReadLine();
+                try
+                {
+                    host.Open();
+                    Console.WriteLine("Хост стартовал!");
+                    Console.ReadLine();
+
+                }
+                catch (TimeoutException timeProblem)
+                {
+                    Console.WriteLine(timeProblem.Message);
+                    Console.ReadLine();
+                }
+                catch (CommunicationException commProblem)
+                {
+                    Console.WriteLine(commProblem.Message);
+                    Console.ReadLine();
+                }
             }
         }
     }

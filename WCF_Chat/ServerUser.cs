@@ -7,7 +7,7 @@ using System.ServiceModel;
 
 namespace WCF_Chat
 {
-    class ServerUser
+    public class ServerUser
     {
         public int ID {get; set;}
         public string Name { get; set; }

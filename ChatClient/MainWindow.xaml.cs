@@ -16,7 +16,7 @@ using ChatClient.ServiceChat;
 
 namespace ChatClient
 {
-    public partial class MainWindow : Window, ChatClient.ServiceChat.IServiceChatCallback
+    public partial class MainWindow : Window, IServiceChatCallback
     {
         bool isConnected = false;
         ServiceChatClient client;
