@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WCF_Chat;
 using System.ServiceModel;
+using System.Linq;
 
-namespace WCF_Chat
+namespace WCF_Chat.Tests
 {
-    public class TestsForServiceChat
+    [TestClass]
+    public class ServiceChatTests
     {
-
-        [Fact]
+        [TestMethod]
         public void Connect_CreateUserAndConnect_SuccessfullyTest()
         {
             ServiceChat sChat = new ServiceChat();
@@ -19,11 +16,11 @@ namespace WCF_Chat
 
             sChat.Connect(userName);
 
-            Assert.Equal(userName, sChat.users.FirstOrDefault(i => i.Name == userName).Name);
+            Assert.AreEqual(userName, sChat.users.FirstOrDefault(i => i.Name == userName).Name);
         }
 
-        [Fact]
-        public void Disconnect_CreateUserAddUserToListOfUsersAndDisconnect_UserDisconnected()
+        [TestMethod]
+        public void Disconnect_CreateUserAddUserToListOfUsersAndDisconnect_UserDisconnectedAndDefault()
         {
             ServiceChat sChat = new ServiceChat();
             ServerUser userPetro = new ServerUser()
@@ -35,7 +32,7 @@ namespace WCF_Chat
             sChat.users.Add(userPetro);
             sChat.Disconnect(userPetro.ID);
 
-            Assert.Equal(default, sChat.users.FirstOrDefault(i => i.ID == userPetro.ID));
+            Assert.AreEqual(default, sChat.users.FirstOrDefault(i => i.ID == userPetro.ID));
 
         }
 

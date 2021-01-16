@@ -13,23 +13,10 @@ namespace ChatHost
         {
             using (var host = new ServiceHost(typeof(WCF_Chat.ServiceChat)))
             {
-                try
-                {
-                    host.Open();
-                    Console.WriteLine("Хост стартовал!");
-                    Console.ReadLine();
 
-                }
-                catch (TimeoutException timeProblem)
-                {
-                    Console.WriteLine(timeProblem.Message);
-                    Console.ReadLine();
-                }
-                catch (CommunicationException commProblem)
-                {
-                    Console.WriteLine(commProblem.Message);
-                    Console.ReadLine();
-                }
+                host.Open();
+                Console.WriteLine("Хост стартовал!");
+                Console.ReadLine();
             }
         }
     }
